@@ -1,0 +1,79 @@
+/* .flex-container {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  
+} */
+
+#board{
+background-color: green
+
+}
+
+
+.container{
+  margin:  0 auto;
+  width: 1000px;
+}
+
+ .grass{
+width: 300px;
+height: 200px;
+background-image: url(img/wall.png);
+background-size: 25%;
+background-repeat: no-repeat;
+} 
+
+.player-1{
+  width: 300px;
+height: 200px;
+background-image: url(img/goodguy.png);
+background-size: 25%;
+background-repeat: no-repeat;
+
+}
+
+  
+.player-2{
+width: 300px;
+height: 200px;
+background-image: url(img/badguy.png);
+background-size: 35%;
+background-repeat: no-repeat;
+
+}
+
+.weapon-1{
+width: 300px;
+height: 200px;
+background-image: url(img/weapon1.png);
+background-size: 25%;
+background-repeat: no-repeat;
+
+} 
+
+.weapon-2{
+width: 100%;
+height: 100%;
+background-image: url(img/weapon2.png);
+background-repeat: no-repeat;
+background-size: 50%;
+
+
+}
+
+.weapon-3{
+width: 300px;
+height: 200px;
+background-image: url(img/weapon3.png);
+background-size: 25%;
+background-repeat: no-repeat;
+}
+
+.weapon-4{
+width: 300px;
+height: 200px;
+background-image: url(img/weapon4.png);
+background-size: 25%;
+background-repeat: no-repeat;
+}
