@@ -104,6 +104,35 @@ Board.prototype.movePlayer = function (player, direction) {
 
 }
 
+document.onkeydown = function (e) {
+    if (event.keyCode == 38) {
+        game.movePlayer(player[0], 'up')
+    }
+    else if (event.keyCode == 37) {
+        game.movePlayer(player[0], 'left')
+    }
+    else if (event.keyCode == 39) {
+        game.movePlayer(player[0], 'right')
+    }
+    else if (event.keyCode == 40) {
+        game.movePlayer(player[0], 'down')
+    }
+    else if (event.keyCode == 87) {
+        game.movePlayer(player[1], 'up')
+    }
+    else if (event.keyCode == 68) {
+        game.movePlayer(player[1], 'right')
+    }
+    else if (event.keyCode == 83) {
+        game.movePlayer(player[1], 'down')
+    }
+    else if (event.keyCode == 65) {
+        game.movePlayer(player[1], 'left')
+    }
+
+
+}
+
 
 
 
