@@ -5,75 +5,112 @@
   
 } */
 
-#board{
-background-color: green
-
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    line-height:1.6;
 }
 
+.button{
+    background:blue ;
+    padding:1em,2em;
+    color: #fff;
+    border:0;
+    font-size:20px; 
+    float:left;
+}
+.button:hover{
+    background: #333;
+}
+.modal{
+    display:none;
+    position: fixed;
+    z-index:1;
+    left:0;
+    top:0;
+    height:100%;
+    width: 100%;
+    overflow:auto;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content{
+    background-color:#f4f4f4 ;
+    margin: 20% auto;
+    padding:20px;
+    width:70%;
+    box-shadow:0 5px 8px 0 rgba(0, 0, 0, 0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name:modalopen;
+    animation-duration:1s;
+}
+.closeBtn{
+   color:#ccc;
+   float:right;
+   font-size:30px; 
+}
+.closeBtn:hover,.closeBtn:focus{
+    color:#000;
+    text-decoration: none;
+    cursor:pointer;
+}
 
+@keyframes modalopen{
+    from{opacity:0}
+    to{opacity:1}
+}
+#board{
+background-color: green;
+}
 .container{
   margin:  0 auto;
   width: 1000px;
-}
-
+} 
  .grass{
-width: 300px;
-height: 200px;
+width: 100%;
+height: 100%;
 background-image: url(img/wall.png);
-background-size: 25%;
+background-size: 50%;
 background-repeat: no-repeat;
 } 
-
 .player-1{
-  width: 300px;
-height: 200px;
+  width: 100%;
+height: 100%;
 background-image: url(img/goodguy.png);
-background-size: 25%;
+background-size: 50%;
 background-repeat: no-repeat;
-
 }
-
-  
 .player-2{
-width: 300px;
-height: 200px;
+width: 100%;
+height: 100%;
 background-image: url(img/badguy.png);
-background-size: 35%;
+background-size: 50%;
 background-repeat: no-repeat;
-
 }
-
 .weapon-1{
-width: 300px;
-height: 200px;
+width: 100%;
+height: 100%;
 background-image: url(img/weapon1.png);
-background-size: 25%;
+background-size: 50%;
 background-repeat: no-repeat;
-
 } 
-
 .weapon-2{
 width: 100%;
 height: 100%;
 background-image: url(img/weapon2.png);
 background-repeat: no-repeat;
 background-size: 50%;
-
-
 }
-
 .weapon-3{
-width: 300px;
-height: 200px;
-background-image: url(img/weapon3.png);
-background-size: 25%;
+width: 100%;
+height: 100%;
+background-image: url(img/weapon3.jpeg);
+background-size: 50%;
 background-repeat: no-repeat;
 }
-
 .weapon-4{
-width: 300px;
-height: 200px;
+width: 100%;
+height: 100%;
 background-image: url(img/weapon4.png);
-background-size: 25%;
+background-size: 50%;
 background-repeat: no-repeat;
 }
+ 

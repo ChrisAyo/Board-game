@@ -1,47 +1,12 @@
-function Weapon(name, damage, id) {
+function Weapon(name, damage, id, type) {
 
     this.name = name;
     this.damage = damage;
-    this.health = 10;
     this.defence = 10;
-    this.id = id
+    this.id = id;
+    this.type = type;
 
 }
-
-// Weapon.prototype.boostDamage = function (player) {
-//     player.damage = player.damage + this.damage
-// }
-
-// Weapon.prototype.boostDefence = function (player) {
-
-//     player.defence = player.defence + this.defence
-// }
-
-// Weapon.prototype.boostHealth = function (player) {
-
-//     player.health = player.health + this.health
-// }
-
-
-
-// const weapons = [
-//     {
-//         type: 'attack',
-//         className: 'weapon-attack',
-//         effect: 10
-//     },
-//     {
-//         type: 'defence',
-//         className: 'weapon-defence',
-//         effect: 10
-//     },
-//     {
-//         type: 'health',
-//         className: 'weapon-health',
-//         effect: 10
-//     },
-
-// ]
 
 function Defence(name) {
     this.name = name;
@@ -60,6 +25,3 @@ function Health(name) {
     this.health = 10
 }
 
-
-
-// Create 4 weapons 

@@ -1,15 +1,45 @@
-function Player(name, id) {
+function Player(name, id, weapon) {
     this.name = name
     this.health = 100
-    this.damage = 10
-    this.defence = 10
+    this.weapon = weapon
+    this.defence = false
     this.id = id
+    this.type = 'player';
+    this.steps = 3
 }
+
+//  after each  movement reduce it by 1 when it gets to zero swap the player 
+
 
 Player.prototype.attack = function (enemy) {
-    enemy.health = enemy.health - this.damage
+
+    if (enemy.health <= 0) {
+
+        return "Stop it, you've won"
+    }
+
+    if (enemy.defence) {
+        enemy.health = enemy.health - this.weapon.damage / 2
+
+    }
+
+    else {
+        enemy.health = enemy.health - this.weapon.damage
+    }
+
+
 }
 
+
+
+
+
+// const grid = boardItems
+
+// let itemFound
+// itemFound = grid.find((item) => item.type === [boardItems.type])
+
+// console.log(itemFound)
 
 //shield
 //type of weapon axe boomer rang 
