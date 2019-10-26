@@ -12,10 +12,14 @@ function Player(name, id, weapon) {
 
 
 Player.prototype.attack = function (enemy) {
+    //<=0
+    // make attack = integer 
+    // make defence = integer 
 
+    // resolve attack by subtract them postiive value = 1st person attack, negative value = second person attack
     if (enemy.health <= 0) {
 
-        return "Stop it, you've won"
+        console.log("Stop it, you've won")
     }
 
     if (enemy.defence) {
@@ -32,6 +36,7 @@ Player.prototype.attack = function (enemy) {
 
 
 
+// const attack = new 
 
 
 // const grid = boardItems

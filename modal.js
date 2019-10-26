@@ -4,6 +4,10 @@ const modal = document.getElementById("fightModal");
 const modalBtn = document.getElementById("modalBtn");
 // Get close button
 const closeBtn = document.getElementsByClassName("closeBtn")[0];
+// Get Attack Buttton
+const attackBtn = document.getElementById("attackBtn");
+//Get defend Button
+const defendBtn = document.getElementById("defendBtn")
 
 //listen for open click
 modalBtn.addEventListener('click', openModal);
@@ -11,6 +15,24 @@ modalBtn.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
 // listen for outside click 
 window.addEventListener('click', clickOutside);
+
+attackBtn.addEventListener('click', attack);
+defendBtn.addEventListener('click', defend);
+
+
+function attack() {
+
+
+    players.data[0].attack(players.data[1]);
+
+}
+
+
+function defend() {
+
+    players.data[1].defence = true;
+}
+
 // function to open Modal 
 function openModal() {
     modal.style.display = "block";
@@ -26,3 +48,4 @@ function clickOutside(e) {
         modal.style.display = "none";
     }
 }
+

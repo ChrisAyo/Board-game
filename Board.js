@@ -3,7 +3,7 @@ function Board(rows, cols) {
     this.cols = cols
     this.board = []
     this.generate()
-    this.findItem
+    //this.findItem
 
 
 
@@ -24,11 +24,19 @@ Board.prototype.addItem = function (y, x, item) {
 }
 
 Board.prototype.removeItem = function (y, x, name) {
-    for (let i = 0; i < this.board[y][x].length; i++) {
-        if (this.board[y][x][i].name === name) {
-            this.board[y][x].splice(i)
-        }
-    }
+
+    var cleanArray = this.board[y][x].filter(function (cellItem) {
+        // console.log(`Removing ${cellItem.name} from ${y} ${x}`)
+        return cellItem.name !== name
+    })
+    console.log('clean array', cleanArray)
+    this.board[y][x] = cleanArray
+
+    // for (let i = 0; i < this.board[y][x].length; i++) {
+    //     if (this.board[y][x][i].name === name) {
+    //         this.board[y][x].splice(i)
+    //     }
+    // }
 }
 
 
@@ -158,16 +166,12 @@ Board.prototype.checkSurronding = function (newY, newX) {
 // there is no wall in the new position
 
 Board.prototype.search = function (y, x, distance, type) {
-
     let foundItems = []
 
     if (distance === 0) {
         if (this.checkSurronding(y, x)) {
+            if (this.board[y][x].length) {
 
-            for (i = 0; i < this.board[y][x].length; i++) {
-
-                console.log("Items in cell for" + type);
-                console.log(this.board[y][x]);
                 const itemFound = this.board[y][x].find(item => item.type === type)
 
                 if (itemFound) {
@@ -228,7 +232,6 @@ Board.prototype.search = function (y, x, distance, type) {
             }
         }
     }
-
     return foundItems
 }
 
@@ -334,6 +337,8 @@ Board.prototype.movePlayer = function (player, direction) {
         const enemy = this.search(newY, newX, 0, 'player')
         //console.log(!wall.length && !enemy.length)
         console.log(enemy)
+
+        // check to see it is not itself on this code 
         if (!wall.length && !enemy.length) {
             this.addItem(newY, newX, player)
             this.removeItem(y, x, player.name)
@@ -342,22 +347,30 @@ Board.prototype.movePlayer = function (player, direction) {
 
 
         }
+
         // console.log(weapons)
         // trying to add weapon to player if he goes over the weapon
-        if (weapons.length && !enemy.length) {
+        if (weapons.length) {
 
-            this.removeItem(newY, newX, weapons[0].name)
             this.addItem(newY, newX, players.data[players.currentId].weapon)
-            players.data[players.currentId].weapon = weapons[0]
+            players.data[players.currentId].weapon = weapons[0] // adds weapon to player
+            this.removeItem(newY, newX, weapons[0].name) //remove the weapon from the cell 
+
+            //drop weapon
+
             // Does not make a diffrence 
             this.renderItem(y, x)
-            // this.renderItem(newY, newX)
+            this.renderItem(newY, newX)
 
             // return true
         }
-        if (enemy.length > 0) {
-            console.log('hello')
+        console.log('enemy length', enemy)
+        if (enemy.length > 0 && enemy[0].name != players.data[0].name) {
+            openModal();
         }
+
+
+        //this.renderItem(newY, newX)
     }
     return true
 
@@ -365,36 +378,7 @@ Board.prototype.movePlayer = function (player, direction) {
 
 }
 
-// if (this.search(newY, newX, 1, 'wall') != 'wall') {
 
-
-
-// if (this.search(newY, newX, 1, 'player')) {
-//     player fight
-// }
-
-// if (this.checkSurronding(newY, newX)) {
-//     move 
-// }
-
-
-//search for wall
-//search for player
-
-//check to make sure we are within bounds
-//search for weapon
-
-// if (this.checkSurronding(newY, newX)) {
-
-//     this.addItem(newY, newX, player)
-//     this.removeItem(y, x, player.name)
-//     this.renderItem(y, x)
-//     this.renderItem(newY, newX)
-
-//     //run function for finding player... its the same one as seraching for weapons...
-// }
-
-//swapping weapon 
 
 // Player movement 
 
@@ -445,97 +429,7 @@ document.onkeydown = function (e) {
 
 
 
-// Players Movement Copy 
 
-// document.onkeydown = function (e) {
-//     let moved = false
-
-//     if (event.keyCode == 38) {
-//         moved = game.movePlayer(player[0], 'up')
-
-//     }
-//     else if (event.keyCode == 37) {
-//         moved = game.movePlayer(player[0], 'left')
-//     }
-//     else if (event.keyCode == 39) {
-//         moved = game.movePlayer(player[0], 'right')
-//     }
-//     else if (event.keyCode == 40) {
-//         moved = game.movePlayer(player[0], 'down')
-//     }
-//     else if (event.keyCode == 87) {
-//         moved = game.movePlayer(player[1], 'up')
-//     }
-//     else if (event.keyCode == 68) {
-//         moved = game.movePlayer(player[1], 'right')
-//     }
-//     else if (event.keyCode == 83) {
-//         moved = game.movePlayer(player[1], 'down')
-//     }
-//     else if (event.keyCode == 65) {
-//         moved = game.movePlayer(player[1], 'left')
-//     }
-
-//     if (moved) {
-
-//         game.search()
-
-//     }
-
-// }
-
-//shift push to swap players in an array from first to bottom 
-
-
-
-
-// board.prototype.findItem = function (array, key, value) {
-
-
-//     for (i = 0; i < array.length; i++) {
-//         if (array[i][key] === value) {
-//             return array[i];
-//         }
-//     }
-// }
-// for (let i = 0; i < distance; i++) {
-
-//     if (checkSurronding(currentPosition.y, currentPosition.x + i)) {
-//         if (game.board[currentPosition.y][currentPosition.x + i].length > 0) {
-//             if (game.board[currentPosition.y][currentPosition.x + i][0].type == 'weapon') {
-//                 foundWeapons.push(game.board[currentPosition.y][currentPosition.x + i])
-//             }
-//         }
-//     }
-//     if (checkSurronding(currentPosition.y, currentPosition.x - i)) {
-//         if (game.board[currentPosition.y][currentPosition.x - i].length > 0) {
-//             if (game.board[currentPosition.y][currentPosition.x - i][0].type == 'weapon') {
-//                 foundWeapons.push(game.board[currentPosition.y][currentPosition.x - i])
-//             }
-//         }
-//     }
-//     if (checkSurronding(currentPosition.y + i, currentPosition.x)) {
-//         if (game.board[currentPosition.y + i][currentPosition.x].length > 0) {
-//             if (game.board[currentPosition.y + i][currentPosition.x][0].type == 'weapon') {
-//                 foundWeapons.push(game.board[currentPosition.y + i][currentPosition.x])
-//             }
-//         }
-//     }
-//     if (checkSurronding(currentPosition.y - i, currentPosition.x)) {
-//         if (game.board[currentPosition.y - i][currentPosition.x].length > 0) {
-//             if (game.board[currentPosition.y - i][currentPosition.x][0].type == 'weapon') {
-//                 foundWeapons.push(game.board[currentPosition.y - i][currentPosition.x])
-
-
-
-//             }
-//         }
-//     }
-
-
-
-// }
-// return foundWeapons
 
 
 
