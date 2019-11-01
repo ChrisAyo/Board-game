@@ -33,14 +33,33 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="closeBtn">&times;</span>
-                    <h2>Fight Starts</h2>
+                    <h2 id="fightStarts">Fight Starts</h2>
                 </div>
 
                 <div class="modal-body">
                     <p> This is the modal </p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident distinctio eligendi voluptatum
-                        possimus, autem nobis iste ipsum, magnam sint architecto quas eum pariatur quibusdam quasi fugit
-                        quisquam ex officiis molestias.</p>
+                    <div>
+                        <ul>
+                            <li>Name: <span id="currentPlayerName"></span>
+                            </li>
+                            <li>Health:<span id="currentPlayerHealth"></span>
+                            </li>
+                            <li>Defending: <span id="currentPlayerDefending"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Name: <span id="enemyName"></span>
+                            </li>
+                            <li>Health:<span id="enemyHealth"></span>
+                            </li>
+                            <li>Defending: <span id="enemyDefending"></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p></p>
                 </div>
                 <div class="modal-footer">
                     <button id="attackBtn" class="button">Attack </button>

@@ -15,20 +15,37 @@ boardItems = [
     new Wall('tile', 'grass', 'type'),
 
 ]
-
+const james = new Player('chris', 'player-1', new Weapon('onePunch', 10, 'weapon-5', 'weapon'))
+const pat = new Player('jeff', 'player-2', new Weapon('superFist', 10, 'weapon-6', 'weapon'))
 const players = {
 
-    data: [new Player('chris', 'player-1', new Weapon('onePunch', 10, 'weapon-5', 'weapon')), new Player('jeff', 'player-2', new Weapon('superFist', 10, 'weapon-6', 'weapon'))],
-    currentId: 0,
+    data: [james, pat],
+    currentPlayer: james,
     currentSteps: 3,
     swap: function () {
+        const firstPlayer = this.data.shift();
+        this.data.push(firstPlayer);
         this.currentSteps = 3
-        this.currentId = 1 - this.currentId
+        this.currentPlayer = this.data[0]
+    },
 
-    }
-
+    // switch: function () {
+    //     this.actionTaken = 1
+    //     this.currentId = 1 - this.currentId
+    // }
 }
 
+// const resolve = {
+
+//     data: [new Player('chris', 'player-1', new Weapon('onePunch', 10, 'weapon-5', 'weapon')), new Player('jeff', 'player-2', new Weapon('superFist', 10, 'weapon-6', 'weapon'))],
+//     currentId: 0,
+//     actionTaken: 1,
+//     switch: function () {
+//         this.actionTaken = 1
+//         this.currentId = 1 - this.currentId
+//     }
+
+// }
 
 // Generating player
 
@@ -58,5 +75,5 @@ boardItems.forEach(function (item, index) {
     game.renderItem(y, x)
 })
 
-const foundWeapons = game.search(players.data[players.currentId].position.y, players.data[players.currentId].position.x, 1, 'wall')
+
 

@@ -352,8 +352,8 @@ Board.prototype.movePlayer = function (player, direction) {
         // trying to add weapon to player if he goes over the weapon
         if (weapons.length) {
 
-            this.addItem(newY, newX, players.data[players.currentId].weapon)
-            players.data[players.currentId].weapon = weapons[0] // adds weapon to player
+            this.addItem(newY, newX, player.weapon)
+            player.weapon = weapons[0] // adds weapon to player
             this.removeItem(newY, newX, weapons[0].name) //remove the weapon from the cell 
 
             //drop weapon
@@ -365,7 +365,7 @@ Board.prototype.movePlayer = function (player, direction) {
             // return true
         }
         console.log('enemy length', enemy)
-        if (enemy.length > 0 && enemy[0].name != players.data[0].name) {
+        if (enemy.length > 0) {
             openModal();
         }
 
@@ -385,32 +385,21 @@ Board.prototype.movePlayer = function (player, direction) {
 
 
 document.onkeydown = function (e) {
+    const player = players.currentPlayer
     let moved = false
 
     if (event.keyCode == 38) {
-        moved = game.movePlayer(players.data[players.currentId], 'up')
+        moved = game.movePlayer(player, 'up')
 
     }
     else if (event.keyCode == 37) {
-        moved = game.movePlayer(players.data[players.currentId], 'left')
+        moved = game.movePlayer(player, 'left')
     }
     else if (event.keyCode == 39) {
-        moved = game.movePlayer(players.data[players.currentId], 'right')
+        moved = game.movePlayer(player, 'right')
     }
     else if (event.keyCode == 40) {
-        moved = game.movePlayer(players.data[players.currentId], 'down')
-    }
-    else if (event.keyCode == 87) {
-        moved = game.movePlayer(player[1], 'up')
-    }
-    else if (event.keyCode == 68) {
-        moved = game.movePlayer(player[1], 'right')
-    }
-    else if (event.keyCode == 83) {
-        moved = game.movePlayer(player[1], 'down')
-    }
-    else if (event.keyCode == 65) {
-        moved = game.movePlayer(player[1], 'left')
+        moved = game.movePlayer(player, 'down')
     }
 
     if (moved) {
@@ -418,7 +407,7 @@ document.onkeydown = function (e) {
         players.currentSteps--
         console.log(players.currentSteps)
 
-        if (players.currentSteps == 0) {
+        if (players.currentSteps === 0) {
             players.swap();
         }
         game.search()
