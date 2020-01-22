@@ -1,8 +1,5 @@
 const jimmie = new Player('jim', 'p3');
 const game = new Board(8, 8);
-// const Board = boardItems
-game.render('board')
-
 
 boardItems = [
     new Weapon('axe', 25, 'weapon-1', 'weapon'),
@@ -15,8 +12,13 @@ boardItems = [
     new Wall('tile', 'grass', 'type'),
 
 ]
+
+const fistP1 = new Weapon('onePunch', 10, 'weapon-5', 'weapon')
+const fistP2 = new Weapon('superFist', 10, 'weapon-6', 'weapon')
+
 const james = new Player('chris', 'player-1', new Weapon('onePunch', 10, 'weapon-5', 'weapon'))
 const pat = new Player('jeff', 'player-2', new Weapon('superFist', 10, 'weapon-6', 'weapon'))
+
 const players = {
 
     data: [james, pat],
@@ -29,51 +31,72 @@ const players = {
         this.currentPlayer = this.data[0]
     },
 
-    // switch: function () {
-    //     this.actionTaken = 1
-    //     this.currentId = 1 - this.currentId
-    // }
 }
 
-// const resolve = {
 
-//     data: [new Player('chris', 'player-1', new Weapon('onePunch', 10, 'weapon-5', 'weapon')), new Player('jeff', 'player-2', new Weapon('superFist', 10, 'weapon-6', 'weapon'))],
-//     currentId: 0,
-//     actionTaken: 1,
-//     switch: function () {
-//         this.actionTaken = 1
-//         this.currentId = 1 - this.currentId
-//     }
+document.onkeydown = function (e) {
+    const player = players.currentPlayer
+    let moved
 
-// }
+    if (event.keyCode == 38) {
+        moved = game.movePlayer(player, 'up')
 
-// Generating player
+    }
+    else if (event.keyCode == 37) {
+        moved = game.movePlayer(player, 'left')
+    }
+    else if (event.keyCode == 39) {
+        moved = game.movePlayer(player, 'right')
+    }
+    else if (event.keyCode == 40) {
+        moved = game.movePlayer(player, 'down')
+    }
 
-// const player = [
+    if (moved.moved) {
 
-//     // this.player()
+        players.currentSteps--
+        console.log(players.currentSteps)
 
-//     new Player('chris', 'player-1', new Weapon('onePunch', 10, 'weapon-5', 'weapon')),
-//     new Player('jeff', 'player-2', new Weapon('superFist', 10, 'weapon-6', 'weapon'))
+        if (players.currentSteps === 0) {
+            players.swap();
+        }
+        game.search()
 
-// ]
+    }
 
+    if (moved.enemy) {
 
-players.data.forEach(function (item, index) {
-    console.log(item, index)
+        openModal(moved.enemy)
 
-    let { y, x } = game.getRandomPosition()
-    game.addItem(y, x, item)
-    game.renderItem(y, x)
-})
+    }
 
-boardItems.forEach(function (item, index) {
-    console.log(item, index)
-
-    let { y, x } = game.getRandomPosition()
-    game.addItem(y, x, item)
-    game.renderItem(y, x)
-})
-
+}
 
 
+function startGame() {
+    game.restart()
+    game.render("board")
+    players.data.forEach(function (item, index) {
+        console.log(item, index)
+        item.restartGame()
+        let { y, x } = game.getRandomPosition()
+        game.addItem(y, x, item)
+        game.renderItem(y, x)
+    })
+
+    boardItems.forEach(function (item, index) {
+        console.log(item, index)
+
+        let { y, x } = game.getRandomPosition()
+        game.addItem(y, x, item)
+        game.renderItem(y, x)
+    })
+
+    players.currentPlayer.hasWon = false
+
+}
+
+startGame()
+
+// display current winner 
+// then close window 

@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
     <title>Game Board</title>
 
@@ -26,18 +28,18 @@
 
     <header> Board Game </header>
 
-    <button id="modalBtn" class="button">Attack </button>
+    <!-- <button id="modalBtn" class="button">Attack </button> -->
 
     <div class="container">
         <div id="fightModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="closeBtn">&times;</span>
+                    <!-- <span class="closeBtn">&times;</span> -->
                     <h2 id="fightStarts">Fight Starts</h2>
                 </div>
 
                 <div class="modal-body">
-                    <p> This is the modal </p>
+                    <p> Current player </p>
                     <div>
                         <ul>
                             <li>Name: <span id="currentPlayerName"></span>
@@ -62,94 +64,33 @@
                     <p></p>
                 </div>
                 <div class="modal-footer">
+
                     <button id="attackBtn" class="button">Attack </button>
                     <button id="defendBtn" class="button">Defend </button>
-                    <h3>Modal footer</h3>
+                    <h3></h3>
 
                 </div>
 
-
-                <p>Let the Battle Begin </p>
+                <!-- 
+                <p>Let the Battle Begin </p> -->
 
             </div>
         </div>
         <div id="board" class="d-flex flex-column" style="height:100vh"></div>
 
     </div>
-    <!-- <div id="board" class="d-flex flex-column" style="height:100vh"></div> -->
-
-
-    <!-- <h> </h> -->
-
-    <!-- link health,attack and defence to the below -->
-
-    <!-- <div class="d-flex justify-content-center bg-secondary p-2" id="status">
-        <h2 class="player-name"> </h2>
-        <ul class="a">
-            <ul>Player Stats</ul>
-            <li>Health: <span id="health"></span> </li>
-            <li>Attack: <span id="attack"></span> </li>
-            <li>Shield: <span id="shield"></span> </li>
-        </ul>
-    </div> -->
-
-    <!-- reverse this below -->
-
-    <!-- <div class="h-100vh d-flex flex-column align-items-center justify-content-center">
-
-    </div> -->
-
-
-
-
 
     <!-- <script src="list.js"></script> -->
+    <!-- <script type="text/javascript" src="jquery-3.4.1.min.js"></script> -->
+
     <script src="Player.js"></script>
     <script src="Board.js"></script>
     <script src="Weapon.js"></script>
     <script src="item.js"></script>
     <script src="index.js"></script>
     <script src="modal.js"></script>
+    <script type="text/javascript" src="test.js"></script>
 
-
-
-
-
-    <!-- 
-    <div id="board" class="d-flex p-2 bd-highlight flex-column" style="height:100vh">
-        <div class="d-flex flex-grow-1">
-            <div id="y" class="flex-fill bg-secondary border"> </div>
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-        </div>
-
-
-        <div class="d-flex flex-grow-1 bg-primary border">
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-        </div>
-
-
-        <div class="d-flex flex-grow-1 bg-secondary">
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-        </div>
-
-
-        <div class="d-flex flex-grow-1 bg-primary">
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-            <div class="flex-fill"> </div>
-        </div>
-
-
-    </div> -->
 </body>
 
 </html>

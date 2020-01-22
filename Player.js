@@ -7,39 +7,29 @@ function Player(name, id, weapon) {
     this.type = 'player';
     this.steps = 3
     this.hasWon = false
+    this.defaultWeapon = weapon
 }
 
-
-Player.prototype.restartGame = function (weapon) {
+Player.prototype.restartGame = function () {
     this.health = 100
-    this.weapon = weapon
-
+    this.weapon = this.defaultWeapon
 }
 
 Player.prototype.attack = function (enemy) {
-
-
     if (enemy.health <= 0) {
         this.hasWon = true
     }
-
     else if (enemy.defence) {
         enemy.health = enemy.health - this.weapon.damage / 2;
         enemy.defence = false;
     }
-
     else {
         enemy.health = enemy.health - this.weapon.damage
     }
-
     if (enemy.health <= 0) {
         this.hasWon = true
     }
-
 }
-
-// Know what player turn it is, if attack check to see if enemy defends or attacks if attack x
-// if defend y
 
 
 
