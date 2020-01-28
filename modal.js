@@ -21,6 +21,12 @@ const defendBtn = document.getElementById("defendBtn");
 //
 defendBtn.addEventListener('click', defend);
 
+
+$(document).ready(function(){
+    $("#victorName").hide()
+  });
+
+
 // const $: (".button").css("color", "yellow")
 // $("attackBtn") click(attack())
 
@@ -39,7 +45,9 @@ function attack() {
     if (players.currentPlayer.hasWon) {
         fightStarts.innerHTML = players.currentPlayer.hasWon
         console.log(players.currentPlayer.health)
-        alert(`${players.currentPlayer.name} Has Won  ${enemy.name} Has lost`)
+        $("#victorName").show();
+        $("#victorName").innerHTML=players.currentPlayer.name;
+        alert()
         closeModal()
         startGame()
         fightStarts.innerHTML = "Fight starts"
@@ -47,7 +55,9 @@ function attack() {
     else {
         players.currentPlayer.attack(enemy);
         if (players.currentPlayer.hasWon) {
-            alert(`${players.currentPlayer.name} Has Won  ${enemy.name} Has lost`)
+            $("#victorName").show();
+            $("#victorName").innerHTML=players.currentPlayer.name;
+            alert()
             closeModal()
             startGame()
             fightStarts.innerHTML = "Fight starts"
